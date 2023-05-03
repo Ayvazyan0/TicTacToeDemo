@@ -1,0 +1,144 @@
+body{
+    background-image: url(image/bg.webp);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+#info{
+    color: aqua;
+    width: 40%;
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    margin: auto;
+    margin-top: 10vh;
+    
+    font-size: 300%;
+    font-weight: 700;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.container{
+    height: 50vh;
+    width: 40%;
+    margin: auto;
+    margin-top: 2vh;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+
+}
+
+.box{
+    height: 33.5%;
+    width: 33.3%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    border-right: solid 2px white;
+    border-bottom: solid 2px white;
+    
+    font-size: 100px;
+    font-family: 'Finger Paint', cursive;
+
+    transition: all 1s;
+
+    cursor: pointer;
+
+    background-color: rgba(128, 122, 122, 0.082);
+    color: white;
+    
+}
+
+.box:nth-child(3n){
+    border-right: none;
+
+}
+.box:nth-child(6) ~ .box{
+    border-bottom: none;
+
+}
+
+.box:hover{
+    background-color: rgba(128, 122, 122, 0.2);
+    
+}
+
+#tryAgainBtn{
+    height: 15vh;
+    width: 30%;
+
+    display: block;
+    margin: auto;
+    margin-top: 2vh;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 300%;
+    font-family: 'Permanent Marker', cursive;
+
+    color: white;
+
+    transition: all 1s;
+
+}
+
+#tryAgainBtn:hover{
+    background-color: rgba(128, 122, 122, 0.082);
+
+}
+
+
+.score{
+    border-bottom: solid 1px white;
+    width: 20%;
+    height: 10vh;
+    
+    position: absolute;
+    left: 5%;
+    top: 12vh;
+
+    font-size: 50px;
+    font-family: 'Finger Paint', cursive;
+
+    display: flex;
+    color: white;
+    justify-content: space-around;
+    text-align: center;
+
+}
+
+.line{
+    border: solid 1px white;
+    height: 50vh;
+
+    position: absolute;
+
+}
+
+.scoreNumber{
+    width: 20%;
+    height: 10vh;
+
+    position: absolute;
+    left: 5%;
+    top: 22vh;
+    
+    font-size: 50px;
+    font-family: 'Finger Paint', cursive;
+
+    display: flex;
+    color: white;
+    justify-content: space-around;
+    text-align: center;
+    
+}

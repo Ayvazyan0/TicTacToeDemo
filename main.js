@@ -1,50 +1,93 @@
-const gameBoard = document.querySelector('#gameBoard');
-const restartBtn = document.querySelector('#btn');
 let arr = [''];
 
-
 function game(){
-
     for(let i = 0; i < gameBoard.children.length; i++){
-        let box = gameBoard.children[i];
-        
-        box.addEventListener('click', move);
+        let boxs = gameBoard.children[i];
+        boxs.addEventListener('click', move);
         function move(e){  
             if(arr[0] == '' || arr[0] == 'O' && e.target.innerHTML != 'O'){
                 e.target.innerText = 'X';
                 arr.unshift('X');
+                info.innerText = 'Turn O';
                 
             }else if(arr[0] == 'X' && e.target.innerText != 'X'){
                 e.target.innerText = 'O';
                 arr.unshift('O');
-
+                info.innerText = 'Turn X';
+                
             };
-            logic()
+            logic();
         };
     };
 };
-game()
+game();
+
+let box = document.getElementsByTagName('div');
+function getWinner(a,b,c){
+    if(box[a].innerText == box[b].innerText && box[a].innerText == box[c].innerText && box[a].innerText != ''){
+        if(box[a].innerText == "X"){
+            info.innerText = 'X win Press try again';
+            gameEnd();
+            score();
+            
+        }else if(box[a].innerText == "O"){
+            info.innerText = 'O win Press try again';
+            gameEnd();
+            score();
+        };
+    };
+};
 
 
 function logic(){
-    if(box1.innerText == box2.innerText && box1.innerText == box3.innerText && box1.innerText != ''){
-        demo.style.backgroundColor = "red"
-    }
-    if(box4.innerText == box5.innerText && box4.innerText == box6.innerText && box4.innerText != ''){
-        demo.style.backgroundColor = "red"
-    }
-    if(box7.innerText == box8.innerText && box7.innerText == box9.innerText && box7.innerText != ''){
-        demo.style.backgroundColor = "red"
-    }
+    getWinner( 0, 1, 2);
+
+    getWinner( 3, 4, 5);
+
+    getWinner( 6, 7, 8);
+
+    getWinner( 0, 3, 6);
+
+    getWinner( 1, 4, 7);
+
+    getWinner( 2, 5, 8);
+
+    getWinner( 0, 4, 8);
+
+    getWinner( 2, 4, 6);
+
+    if(arr.length > 9 && info.innerText != 'X' || arr.length > 9 &&  info.innerText != "O"){
+        info.innerText = 'DRAW';
+    };
         
-}
+};
 
-
-restartBtn.onclick = function restart(){
-    let allBox = document.getElementsByClassName('box');
-    for(let i = 0; i < allBox.length; i++){
-        let box = allBox[i];
-        box.innerText = '';
-
+let a = 0;
+let b = 0;
+function score(){
+    if(info.innerText == 'X win Press try again'){
+        a++;
+        X.innerText = a;
+    }else if(info.innerText == 'O win Press try again'){
+        b++;
+        O.innerText = b;
     };
 };
+
+
+function gameEnd(){
+    gameBoard.style.display = 'none';
+};
+
+
+tryAgainBtn.onclick = function tryAgain(){
+    let allBox = document.getElementsByClassName('box');
+    for(let i = 0; i < allBox.length; i++){
+        let allboxs = allBox[i];
+        allboxs.innerText = '';
+    };
+    arr.splice(0, arr.length-1);
+    info.innerText = 'Click for play';
+    gameBoard.style.display = 'flex';
+};
+
